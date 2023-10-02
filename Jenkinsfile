@@ -1,6 +1,5 @@
 pipeline {
     agent {
-        docker { image 'node' }
         node { label 'windowsAgent' }
     }
     stages {
