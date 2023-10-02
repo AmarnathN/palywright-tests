@@ -1,7 +1,19 @@
 # playwright-tests
-- python3 virtualenv venv
+
+
+## If you are running Python < 3.4+
+
+- python3 -m virtualenv venv
 - source venv/bin/activate
 - pip3 install -r requirements.txt
+- playwright install
+- python3 -m pytest
+
+## If you are running Python 3.4+ windows
+
+- python -m venv venv
+- .\venv\Scripts\Activate.ps1
+- pip install -r requirements.txt
 - playwright install
 - python3 -m pytest
 
