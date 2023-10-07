@@ -3,6 +3,11 @@ pipeline {
         dockerfile true
     }
     stages {
+        stage('clean') {
+            steps {
+                cleanWs()
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building ..'
@@ -16,6 +21,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying ..'
+                
             }
         }
     }
