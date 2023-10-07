@@ -1,18 +1,22 @@
 pipeline {
-    agent {
-        dockerfile true
-    }
+    agent none
     options {
         // This is required if you want to clean before build
         skipDefaultCheckout(true)
     }
     stages {
         stage('clean') {
+             agent {
+                    dockerfile true
+            }
             steps {
                 cleanWs()
             }
         }
         stage('Build') {
+            agent {
+                dockerfile true
+            }
             steps {
                 checkout scm
                 echo 'Building ..'
