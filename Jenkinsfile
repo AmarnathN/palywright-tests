@@ -14,10 +14,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                node {
-                    checkout scm
-                    echo 'Building ..'
-                }
+                checkout scm
+                echo 'Building ..'
             }
         }
         stage('Test') {
