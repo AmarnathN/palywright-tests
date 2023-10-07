@@ -1,6 +1,7 @@
 pipeline {
     agent {
-        node { label 'windowsAgent' }
+        // node { label 'windowsAgent' }
+        dockerfile true
     }
     stages {
         stage('Build') {
