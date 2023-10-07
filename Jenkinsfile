@@ -9,13 +9,17 @@ pipeline {
     stages {
         stage('clean') {
             steps {
-                cleanWs()
+                node{        
+                    cleanWs()
+                }
             }
         }
         stage('Build') {
             steps {
-                checkout scm
-                echo 'Building ..'
+                node{ 
+                  checkout scm
+                  echo 'Building ..'
+                }
             }
         }
         stage('Test') {
