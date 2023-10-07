@@ -2,6 +2,10 @@ pipeline {
     agent {
         dockerfile true
     }
+    options {
+        // This is required if you want to clean before build
+        skipDefaultCheckout(true)
+    }
     stages {
         stage('clean') {
             steps {
@@ -10,6 +14,7 @@ pipeline {
         }
         stage('Build') {
             steps {
+                checkout scm
                 echo 'Building ..'
             }
         }
@@ -23,6 +28,17 @@ pipeline {
                 echo 'Deploying ..'
                 
             }
+        }
+    }
+    post {
+        // Clean after build
+        always {
+            cleanWs(cleanWhenNotBuilt: false,
+                    deleteDirs: true,
+                    disableDeferredWipeout: true,
+                    notFailBuild: true,
+                    patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
+                               [pattern: '.propsfile', type: 'EXCLUDE']])
         }
     }
 }
